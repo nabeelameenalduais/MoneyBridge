@@ -114,7 +114,7 @@ export default function Layout({ children }: LayoutProps) {
             <div className="flex items-center space-x-3">
               <div className="hidden sm:block text-right">
                 <p className="text-sm font-medium text-gray-900">{user?.name}</p>
-                <p className="text-xs text-secondary">@{user?.username}</p>
+                <p className="text-xs text-[#050500]">@{user?.username}</p>
               </div>
               <div className="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
                 <i className="fas fa-user text-gray-600"></i>
@@ -130,7 +130,6 @@ export default function Layout({ children }: LayoutProps) {
           </div>
         </div>
       </header>
-
       <div className="flex">
         {/* Sidebar */}
         <aside className={`${sidebarOpen ? 'block' : 'hidden'} lg:flex w-64 bg-surface border-r border-gray-200 min-h-[calc(100vh-73px)]`}>
