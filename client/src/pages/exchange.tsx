@@ -45,7 +45,7 @@ export default function ExchangePage() {
     defaultValues: {
       fromCurrency: "USD",
       toCurrency: "SAR",
-      amount: 0,
+      amount: undefined,
     },
   });
 
@@ -74,7 +74,7 @@ export default function ExchangePage() {
 
   // Calculate converted amount when rate or amount changes
   useEffect(() => {
-    if (exchangeRate && amount) {
+    if (exchangeRate && amount && amount > 0) {
       setConvertedAmount(amount * exchangeRate);
     } else {
       setConvertedAmount(0);
@@ -93,7 +93,7 @@ export default function ExchangePage() {
         title: "Exchange successful",
         description: "Your currency exchange has been completed",
       });
-      form.reset({ fromCurrency, toCurrency, amount: 0 });
+      form.reset({ fromCurrency, toCurrency, amount: undefined });
     },
     onError: (error: any) => {
       toast({
@@ -211,7 +211,8 @@ export default function ExchangePage() {
                               placeholder="0.00"
                               className="px-4 py-3 border-gray-200 rounded-xl"
                               {...field}
-                              onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
+                              value={field.value || ""}
+                              onChange={(e) => field.onChange(e.target.value ? parseFloat(e.target.value) : undefined)}
                             />
                           </FormControl>
                         </FormItem>
@@ -260,8 +261,8 @@ export default function ExchangePage() {
                       )}
                     />
                     <Input
-                      type="number"
-                      value={convertedAmount.toFixed(2)}
+                      type="text"
+                      value={convertedAmount > 0 ? convertedAmount.toFixed(2) : ""}
                       readOnly
                       placeholder="0.00"
                       className="px-4 py-3 border-gray-200 rounded-xl bg-gray-50"

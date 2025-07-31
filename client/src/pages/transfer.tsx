@@ -51,7 +51,7 @@ export default function TransferPage() {
     defaultValues: {
       recipientUsername: "",
       currency: "USD",
-      amount: 0,
+      amount: undefined,
       message: "",
     },
   });
@@ -105,7 +105,7 @@ export default function TransferPage() {
         title: "Transfer successful",
         description: "Your transfer has been completed",
       });
-      form.reset({ recipientUsername: "", currency: "USD", amount: 0, message: "" });
+      form.reset({ recipientUsername: "", currency: "USD", amount: undefined, message: "" });
       setRecipientInfo(null);
     },
     onError: (error: any) => {
@@ -257,7 +257,8 @@ export default function TransferPage() {
                             placeholder="0.00"
                             className="px-4 py-3 border-gray-200 rounded-xl"
                             {...field}
-                            onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
+                            value={field.value || ""}
+                            onChange={(e) => field.onChange(e.target.value ? parseFloat(e.target.value) : undefined)}
                           />
                         </FormControl>
                         <p className="text-sm text-secondary mt-1">
@@ -291,7 +292,7 @@ export default function TransferPage() {
                 />
 
                 {/* Transfer Summary */}
-                {amount > 0 && (
+                {amount && amount > 0 && (
                   <div className="bg-blue-50 p-4 rounded-xl">
                     <h4 className="font-medium text-gray-900 mb-3">Transfer Summary</h4>
                     <div className="space-y-2 text-sm">
@@ -338,6 +339,67 @@ export default function TransferPage() {
                 </Button>
               </form>
             </Form>
+          </CardContent>
+        </Card>
+
+        {/* Sample Test Data */}
+        <Card className="rounded-2xl border-gray-100 shadow-sm mt-6">
+          <CardContent className="p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Test Accounts for Transfer</h3>
+            <p className="text-sm text-gray-600 mb-4">Use these usernames to test transfers:</p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-green-50 p-4 rounded-xl border border-green-200">
+                <div className="flex items-center justify-between mb-2">
+                  <h4 className="font-medium text-gray-900">Alice Smith</h4>
+                  <span className="text-sm text-green-600 bg-green-100 px-2 py-1 rounded">Active</span>
+                </div>
+                <p className="text-sm text-gray-600 mb-3">Username: <span className="font-mono font-medium">alice123</span></p>
+                <div className="space-y-1 text-sm">
+                  <div className="flex justify-between">
+                    <span>USD:</span>
+                    <span className="font-medium">$500.00</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>SAR:</span>
+                    <span className="font-medium">ر.س1,250.00</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>YER:</span>
+                    <span className="font-medium">﷼75,000.00</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-blue-50 p-4 rounded-xl border border-blue-200">
+                <div className="flex items-center justify-between mb-2">
+                  <h4 className="font-medium text-gray-900">Bob Johnson</h4>
+                  <span className="text-sm text-blue-600 bg-blue-100 px-2 py-1 rounded">Active</span>
+                </div>
+                <p className="text-sm text-gray-600 mb-3">Username: <span className="font-mono font-medium">bob456</span></p>
+                <div className="space-y-1 text-sm">
+                  <div className="flex justify-between">
+                    <span>USD:</span>
+                    <span className="font-medium">$750.00</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>SAR:</span>
+                    <span className="font-medium">ر.س500.00</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>YER:</span>
+                    <span className="font-medium">﷼100,000.00</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-4 p-3 bg-gray-50 rounded-lg">
+              <p className="text-sm text-gray-600">
+                <i className="fas fa-info-circle mr-2 text-blue-500"></i>
+                <strong>Tip:</strong> Type a username above to verify the recipient before sending your transfer.
+              </p>
+            </div>
           </CardContent>
         </Card>
       </div>
