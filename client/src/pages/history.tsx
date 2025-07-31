@@ -187,7 +187,7 @@ export default function HistoryPage() {
             <Button
               onClick={clearFilters}
               variant="ghost"
-              className="text-secondary hover:text-gray-900 text-sm font-medium"
+              className="text-[#000000] hover:text-gray-900 text-sm font-medium"
             >
               Clear Filters
             </Button>
