@@ -141,7 +141,6 @@ export default function DashboardPage() {
         </h2>
         <p className="text-secondary">Here's your account overview for today</p>
       </div>
-
       {/* Currency Balances */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         {accounts.map((account: Account) => (
@@ -175,7 +174,6 @@ export default function DashboardPage() {
           </Card>
         ))}
       </div>
-
       {/* Quick Actions and Recent Transactions */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Quick Actions */}
@@ -206,7 +204,7 @@ export default function DashboardPage() {
                     </div>
                     <div className="text-left">
                       <p className="font-medium text-gray-900">Transfer Funds</p>
-                      <p className="text-sm text-secondary">Send money to other clients</p>
+                      <p className="text-sm text-[#080800]">Send money to other clients</p>
                     </div>
                   </div>
                   <i className="fas fa-chevron-right text-gray-400"></i>
@@ -267,7 +265,6 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
       </div>
-
       {/* Exchange Rates Widget */}
       <Card className="rounded-2xl border-gray-100 shadow-sm">
         <CardContent className="p-6">
