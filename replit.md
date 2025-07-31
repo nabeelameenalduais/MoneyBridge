@@ -8,6 +8,13 @@ This is a secure, client-facing web portal for an Exchange Office built with a f
 
 Preferred communication style: Simple, everyday language.
 
+## Recent Changes
+
+- **July 31, 2025**: Successfully migrated project from Replit Agent to Replit environment
+- **Database Setup**: PostgreSQL database created and schema pushed successfully
+- **Demo User**: Created demo user with credentials (username: demo, password: password123)
+- **Exchange Rates**: Service running with fallback to Fixer.io API
+
 ## System Architecture
 
 ### Frontend Architecture
