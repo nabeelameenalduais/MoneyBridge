@@ -189,7 +189,7 @@ export default function DashboardPage() {
                     </div>
                     <div className="text-left">
                       <p className="font-medium text-gray-900">Exchange Currency</p>
-                      <p className="text-sm text-secondary">Convert between currencies</p>
+                      <p className="text-sm text-[#000000]">Convert between currencies</p>
                     </div>
                   </div>
                   <i className="fas fa-chevron-right text-gray-400"></i>
