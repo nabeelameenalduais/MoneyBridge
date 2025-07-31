@@ -219,7 +219,7 @@ export default function ExchangePage() {
                       )}
                     />
                   </div>
-                  <p className="text-sm text-secondary mt-2">
+                  <p className="text-sm mt-2 text-[#1c1c00]">
                     Available: {formatBalance(getAccountBalance(fromCurrency), fromCurrency)}
                   </p>
                   <FormMessage />
