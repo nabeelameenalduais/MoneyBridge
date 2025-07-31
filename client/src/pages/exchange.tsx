@@ -65,7 +65,10 @@ export default function ExchangePage() {
           }
         } catch (error) {
           console.error("Failed to fetch exchange rate:", error);
+          setExchangeRate(0);
         }
+      } else {
+        setExchangeRate(0);
       }
     };
 
@@ -74,12 +77,12 @@ export default function ExchangePage() {
 
   // Calculate converted amount when rate or amount changes
   useEffect(() => {
-    if (exchangeRate && amount && amount > 0) {
+    if (fromCurrency !== toCurrency && exchangeRate && amount && amount > 0) {
       setConvertedAmount(amount * exchangeRate);
     } else {
       setConvertedAmount(0);
     }
-  }, [exchangeRate, amount]);
+  }, [exchangeRate, amount, fromCurrency, toCurrency]);
 
   const exchangeMutation = useMutation({
     mutationFn: async (data: ExchangeRequest) => {
@@ -111,9 +114,27 @@ export default function ExchangePage() {
   const swapCurrencies = () => {
     const currentFrom = form.getValues("fromCurrency");
     const currentTo = form.getValues("toCurrency");
-    form.setValue("fromCurrency", currentTo);
-    form.setValue("toCurrency", currentFrom);
+    if (currentFrom !== currentTo) {
+      form.setValue("fromCurrency", currentTo);
+      form.setValue("toCurrency", currentFrom);
+    }
   };
+
+  // Get available currencies for "To" dropdown (excluding the selected "From" currency)
+  const getAvailableToCurrencies = () => {
+    const allCurrencies = ["USD", "SAR", "YER"];
+    return allCurrencies.filter(currency => currency !== fromCurrency);
+  };
+
+  // Auto-select a different currency if same as "From"
+  useEffect(() => {
+    if (fromCurrency === toCurrency) {
+      const availableCurrencies = getAvailableToCurrencies();
+      if (availableCurrencies.length > 0) {
+        form.setValue("toCurrency", availableCurrencies[0]);
+      }
+    }
+  }, [fromCurrency, toCurrency, form]);
 
   const getAccountBalance = (currency: string) => {
     const account = accounts.find((acc: Account) => acc.currency === currency);
@@ -245,16 +266,18 @@ export default function ExchangePage() {
                       name="toCurrency"
                       render={({ field }) => (
                         <FormItem>
-                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <Select onValueChange={field.onChange} value={field.value}>
                             <FormControl>
                               <SelectTrigger className="px-4 py-3 border-gray-200 rounded-xl">
                                 <SelectValue />
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                              <SelectItem value="USD">{currencyNames.USD}</SelectItem>
-                              <SelectItem value="SAR">{currencyNames.SAR}</SelectItem>
-                              <SelectItem value="YER">{currencyNames.YER}</SelectItem>
+                              {getAvailableToCurrencies().map(currency => (
+                                <SelectItem key={currency} value={currency}>
+                                  {currencyNames[currency]}
+                                </SelectItem>
+                              ))}
                             </SelectContent>
                           </Select>
                         </FormItem>
@@ -270,8 +293,20 @@ export default function ExchangePage() {
                   </div>
                 </div>
 
+                {/* Same Currency Warning */}
+                {fromCurrency === toCurrency && (
+                  <div className="bg-red-50 p-4 rounded-xl border border-red-200">
+                    <div className="flex items-center">
+                      <i className="fas fa-exclamation-triangle text-red-500 mr-2"></i>
+                      <span className="text-sm text-red-700">
+                        Cannot exchange the same currency. Please select different currencies.
+                      </span>
+                    </div>
+                  </div>
+                )}
+
                 {/* Exchange Rate Info */}
-                {exchangeRate > 0 && (
+                {exchangeRate > 0 && fromCurrency !== toCurrency && (
                   <div className="bg-blue-50 p-4 rounded-xl">
                     <div className="flex items-center justify-between">
                       <span className="text-sm text-gray-600">Exchange Rate</span>
@@ -289,7 +324,13 @@ export default function ExchangePage() {
                 {/* Submit Button */}
                 <Button
                   type="submit"
-                  disabled={exchangeMutation.isPending || !amount || fromCurrency === toCurrency || getAccountBalance(fromCurrency) < amount}
+                  disabled={
+                    exchangeMutation.isPending || 
+                    !amount || 
+                    amount <= 0 ||
+                    fromCurrency === toCurrency || 
+                    getAccountBalance(fromCurrency) < amount
+                  }
                   className="w-full bg-primary text-white py-3 px-4 rounded-xl hover:bg-blue-700 font-medium"
                 >
                   {exchangeMutation.isPending ? (
