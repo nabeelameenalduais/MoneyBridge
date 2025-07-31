@@ -16,6 +16,8 @@ Preferred communication style: Simple, everyday language.
 - **Exchange Rates**: Service running with fallback to Fixer.io API
 - **New Feature**: Added comprehensive Analytics dashboard with financial insights, charts, and performance metrics
 - **Navigation**: Updated mobile and desktop navigation to include Analytics page with 5-column grid layout
+- **Multi-User Testing**: Created 4 test accounts with different balances for transfer testing
+- **Test Accounts Dashboard**: Added visual test accounts section showing all available users for transfers
 
 ## System Architecture
 

@@ -265,6 +265,113 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
       </div>
+      {/* Test Accounts for Transfer */}
+      <Card className="rounded-2xl border-gray-100 shadow-sm">
+        <CardContent className="p-6">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-xl font-semibold text-gray-900">Test Accounts for Transfer</h3>
+            <div className="flex items-center space-x-2 text-sm text-secondary">
+              <i className="fas fa-users"></i>
+              <span>Available for testing</span>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="p-4 bg-blue-50 border border-blue-200 rounded-xl">
+              <div className="flex items-center space-x-3 mb-3">
+                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                  <i className="fas fa-user text-blue-600"></i>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900">Demo User</h4>
+                  <p className="text-sm text-gray-600">@demo</p>
+                </div>
+              </div>
+              <div className="text-xs text-gray-600">
+                <p>Password: password123</p>
+                <div className="mt-2 space-y-1">
+                  <p>USD: $500.00</p>
+                  <p>SAR: ﷼6,875.64</p>
+                  <p>YER: ﷼250,000.00</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-4 bg-green-50 border border-green-200 rounded-xl">
+              <div className="flex items-center space-x-3 mb-3">
+                <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                  <i className="fas fa-user text-green-600"></i>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900">Alice Johnson</h4>
+                  <p className="text-sm text-gray-600">@alice</p>
+                </div>
+              </div>
+              <div className="text-xs text-gray-600">
+                <p>Password: alice2024</p>
+                <div className="mt-2 space-y-1">
+                  <p>USD: $500.00</p>
+                  <p>SAR: ﷼10,000.00</p>
+                  <p>YER: ﷼50,000.00</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-4 bg-purple-50 border border-purple-200 rounded-xl">
+              <div className="flex items-center space-x-3 mb-3">
+                <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                  <i className="fas fa-user text-purple-600"></i>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900">Bob Smith</h4>
+                  <p className="text-sm text-gray-600">@bob</p>
+                </div>
+              </div>
+              <div className="text-xs text-gray-600">
+                <p>Password: bob2024</p>
+                <div className="mt-2 space-y-1">
+                  <p>USD: $2,000.00</p>
+                  <p>SAR: ﷼3,000.00</p>
+                  <p>YER: ﷼100,000.00</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-4 bg-pink-50 border border-pink-200 rounded-xl">
+              <div className="flex items-center space-x-3 mb-3">
+                <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center">
+                  <i className="fas fa-user text-pink-600"></i>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900">Sarah Davis</h4>
+                  <p className="text-sm text-gray-600">@sarah</p>
+                </div>
+              </div>
+              <div className="text-xs text-gray-600">
+                <p>Password: sarah2024</p>
+                <div className="mt-2 space-y-1">
+                  <p>USD: $800.00</p>
+                  <p>SAR: ﷼2,000.00</p>
+                  <p>YER: ﷼500,000.00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+            <div className="flex items-start space-x-2">
+              <i className="fas fa-info-circle text-yellow-600 mt-0.5"></i>
+              <div className="text-sm text-yellow-800">
+                <p className="font-medium">Testing Instructions:</p>
+                <p>1. Transfer money between these accounts using the Transfer page</p>
+                <p>2. Logout and login with different usernames to see the received funds</p>
+                <p>3. All transactions are stored in the database and visible in transaction history</p>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
       {/* Exchange Rates Widget */}
       <Card className="rounded-2xl border-gray-100 shadow-sm">
         <CardContent className="p-6">
