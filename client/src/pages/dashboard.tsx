@@ -139,7 +139,7 @@ export default function DashboardPage() {
         <h2 className="text-2xl font-bold text-gray-900 mb-2">
           Welcome back, {user?.name?.split(' ')[0]}!
         </h2>
-        <p className="text-secondary">Here's your account overview for today</p>
+        <p className="text-[#000000]">Here's your account overview for today</p>
       </div>
       {/* Currency Balances */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
