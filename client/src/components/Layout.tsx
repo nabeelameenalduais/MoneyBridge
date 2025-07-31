@@ -25,6 +25,7 @@ export default function Layout({ children }: LayoutProps) {
     { name: "Exchange", href: "/exchange", icon: "fas fa-exchange-alt" },
     { name: "Transfer", href: "/transfer", icon: "fas fa-paper-plane" },
     { name: "History", href: "/history", icon: "fas fa-history" },
+    { name: "Analytics", href: "/analytics", icon: "fas fa-chart-line" },
   ];
 
   const isActive = (href: string) => location === href;
@@ -64,7 +65,7 @@ export default function Layout({ children }: LayoutProps) {
 
         {/* Mobile Navigation */}
         <nav className="fixed bottom-0 left-0 right-0 bg-surface border-t border-gray-200 z-50">
-          <div className="grid grid-cols-4 h-16">
+          <div className="grid grid-cols-5 h-16">
             {navigation.map((item) => (
               <Link
                 key={item.name}

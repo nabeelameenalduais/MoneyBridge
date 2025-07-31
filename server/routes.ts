@@ -283,6 +283,64 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Analytics routes
+  app.get('/api/analytics', authenticateToken, async (req: AuthenticatedRequest, res) => {
+    try {
+      const transactions = await storage.getClientTransactions(req.clientId!);
+      
+      if (!transactions || transactions.length === 0) {
+        return res.json({
+          totalTransactions: 0,
+          totalExchangeVolume: 0,
+          totalTransferVolume: 0,
+          averageTransactionValue: 0,
+          mostActiveMonth: 'No data',
+          currencyDistribution: [],
+          monthlyActivity: [],
+          exchangeRateEfficiency: [],
+          recentTrends: { transactionTrend: 0, volumeTrend: 0 }
+        });
+      }
+
+      // Calculate analytics
+      const exchanges = transactions.filter(t => t.type === 'exchange');
+      const transfers = transactions.filter(t => t.type === 'transfer');
+      
+      const totalExchangeVolume = exchanges.reduce((sum, t) => sum + parseFloat(t.amount || '0'), 0);
+      const totalTransferVolume = transfers.reduce((sum, t) => sum + parseFloat(t.amount || '0'), 0);
+      
+      res.json({
+        totalTransactions: transactions.length,
+        totalExchangeVolume,
+        totalTransferVolume,
+        averageTransactionValue: (totalExchangeVolume + totalTransferVolume) / transactions.length || 0,
+        mostActiveMonth: 'Current',
+        currencyDistribution: [
+          { currency: 'USD', count: exchanges.filter(t => t.currencyFrom === 'USD' || t.currencyTo === 'USD').length, volume: 0 },
+          { currency: 'SAR', count: exchanges.filter(t => t.currencyFrom === 'SAR' || t.currencyTo === 'SAR').length, volume: 0 },
+          { currency: 'YER', count: exchanges.filter(t => t.currencyFrom === 'YER' || t.currencyTo === 'YER').length, volume: 0 }
+        ],
+        monthlyActivity: [
+          { month: 'Jan', exchanges: 0, transfers: 0, volume: 0 },
+          { month: 'Feb', exchanges: 0, transfers: 0, volume: 0 },
+          { month: 'Mar', exchanges: 0, transfers: 0, volume: 0 },
+          { month: 'Apr', exchanges: 0, transfers: 0, volume: 0 },
+          { month: 'May', exchanges: 0, transfers: 0, volume: 0 },
+          { month: 'Jun', exchanges: exchanges.length, transfers: transfers.length, volume: totalExchangeVolume + totalTransferVolume }
+        ],
+        exchangeRateEfficiency: exchanges.map(t => ({
+          pair: `${t.currencyFrom}/${t.currencyTo}`,
+          avgRate: parseFloat(t.exchangeRate || '0'),
+          count: 1
+        })),
+        recentTrends: { transactionTrend: transactions.length, volumeTrend: totalExchangeVolume + totalTransferVolume }
+      });
+    } catch (error) {
+      console.error('Analytics error:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+
   // Exchange rates routes
   app.get('/api/exchange-rates', async (req, res) => {
     try {

@@ -11,6 +11,7 @@ import DashboardPage from "@/pages/dashboard";
 import ExchangePage from "@/pages/exchange";
 import TransferPage from "@/pages/transfer";
 import HistoryPage from "@/pages/history";
+import AnalyticsPage from "@/pages/analytics";
 import Layout from "@/components/Layout";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import NotFound from "@/pages/not-found";
@@ -93,6 +94,14 @@ function AppRouter() {
         <ProtectedRoute>
           <Layout>
             <HistoryPage />
+          </Layout>
+        </ProtectedRoute>
+      </Route>
+      
+      <Route path="/analytics">
+        <ProtectedRoute>
+          <Layout>
+            <AnalyticsPage />
           </Layout>
         </ProtectedRoute>
       </Route>
