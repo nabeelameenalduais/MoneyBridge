@@ -49,10 +49,11 @@ export default function Layout({ children }: LayoutProps) {
               </div>
               <button 
                 onClick={logout}
-                className="text-secondary hover:text-error"
+                className="flex items-center space-x-1 px-2 py-1 bg-red-500 hover:bg-red-600 text-white rounded text-sm transition-colors"
                 title="Logout"
               >
                 <i className="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
               </button>
             </div>
           </div>
@@ -122,10 +123,11 @@ export default function Layout({ children }: LayoutProps) {
               </div>
               <button 
                 onClick={logout}
-                className="text-secondary hover:text-error"
+                className="flex items-center space-x-2 px-3 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors font-medium"
                 title="Logout"
               >
                 <i className="fas fa-sign-out-alt"></i>
+                <span className="hidden sm:inline">Logout</span>
               </button>
             </div>
           </div>
