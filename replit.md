@@ -20,6 +20,8 @@ Preferred communication style: Simple, everyday language.
 - **Test Accounts Dashboard**: Added visual test accounts section showing all available users for transfers
 - **User-Specific Data**: All transactions, analytics, and dashboard data properly filtered per authenticated user
 - **Database Backup**: Created complete database schema and data backup file for restoration
+- **Transfer Display Fix**: Fixed critical issue where transfer transactions showed incorrectly for both sender and receiver
+- **Transaction Filtering**: Each user now sees only their own transactions (sender sees "transfer", receiver sees "received")
 
 ## System Architecture
 

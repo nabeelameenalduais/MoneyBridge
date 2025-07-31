@@ -102,7 +102,7 @@ export class DatabaseStorage implements IStorage {
     let query = db
       .select()
       .from(transactions)
-      .where(or(eq(transactions.clientId, clientId), eq(transactions.receiverId, clientId)));
+      .where(eq(transactions.clientId, clientId));
 
     if (filters?.type && filters.type !== 'all') {
       query = query.where(eq(transactions.type, filters.type));
