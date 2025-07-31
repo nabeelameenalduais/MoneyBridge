@@ -156,7 +156,7 @@ export default function DashboardPage() {
                       {account.currency === 'USD' ? 'US Dollar' : 
                        account.currency === 'SAR' ? 'Saudi Riyal' : 'Yemeni Rial'}
                     </h3>
-                    <p className="text-sm text-secondary">{account.currency}</p>
+                    <p className="text-sm text-[#000000]">{account.currency}</p>
                   </div>
                 </div>
                 <i className={`fas ${
