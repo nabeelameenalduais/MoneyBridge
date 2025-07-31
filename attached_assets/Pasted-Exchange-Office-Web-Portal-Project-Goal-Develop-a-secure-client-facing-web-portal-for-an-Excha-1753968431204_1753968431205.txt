@@ -1,0 +1,256 @@
+Exchange Office Web Portal
+
+🔖 Project Goal
+
+Develop a secure, client-facing web portal for an Exchange Office, enabling clients to:
+
+Log in securely
+
+View multi-currency balances (USD, SAR, YER)
+
+Perform currency exchanges
+
+Transfer funds to other clients
+
+The application must be user-friendly, secure, responsive, and integrated with live exchange rate APIs.
+
+🔎 Overview
+
+This website is part of a dual-platform system, with the desktop application used by system users (employees) to create and manage client accounts, while the website allows clients to interact with their accounts independently.
+
+🔑 User Role
+
+Client:
+
+Can log in using credentials provided by the system user
+
+Can access and manage only their own data
+
+🔀 Functional Requirements
+
+1. Client Login
+
+Input: Username, Password
+
+Process: Validate credentials
+
+Secure password comparison (hashed)
+
+Use JWT or session-based authentication
+
+Output:
+
+On success: Redirect to dashboard
+
+On failure: Show relevant error message
+
+2. View Account Dashboard
+
+Display balances for USD, SAR, YER
+
+Highlight available funds and latest exchange rates
+
+Accessible only to authenticated users
+
+3. Currency Exchange
+
+Inputs:
+
+From Currency
+
+To Currency
+
+Amount
+
+Process:
+
+Validate that client has sufficient balance in source currency
+
+Retrieve live exchange rate (from database, synced via FreeCurrencyAPI(with key :fca_live_80j2grkuH4z96OpuetED9DqlXBHuCnoKzxTiHib6) or Fixer.io with key :b9d732cc9cf5d54c27069256a74f044f) choose the better, and get benefits of all its endpoints 
+
+Calculate converted amount
+
+Deduct source amount and add target amount
+
+Record transaction in Transactions table
+
+Output:
+
+Confirmation message
+
+Updated balances
+
+Exchange recorded in transaction history
+
+4. Transfer to Another Client
+
+Inputs:
+
+Receiver's account ID or username
+
+Currency
+
+Amount
+
+Process:
+
+Check if receiver exists
+
+Validate sufficient sender balance
+
+Deduct from sender, add to receiver
+
+Record transaction
+
+Output:
+
+Success message
+
+Transaction history updated for both users
+
+5. View Transaction History
+
+Show all exchange and transfer transactions for the client
+
+Fields:
+
+Date, Type, Amount, From/To Currency, Receiver (for transfers)
+
+Option to paginate results
+
+6. Transaction Filtering and Sorting
+
+Allow filtering by:
+
+Date range
+
+Transaction type (exchange, transfer)
+
+Currency
+
+Allow sorting by:
+
+Date
+
+Amount
+
+7. Display Live Exchange Rates
+
+Show current exchange rates used by the system
+
+Data is fetched from backend (daily updates from APIs)
+
+8. Logout
+
+Terminate user session/token
+
+Redirect to login page
+
+🚀 Non-Functional Requirements
+
+🔒 Security
+
+Passwords must be securely hashed (e.g., bcrypt)
+
+HTTPS enforced for all communications
+
+Session tokens or JWT with expiration
+
+Clients can only access their own data
+
+Input sanitation on both frontend and backend
+
+⏱️ Performance
+
+Fast loading and real-time balance updates
+
+Caching of exchange rates for efficiency
+
+🔧 Usability
+
+Mobile-friendly, responsive design
+
+Clean and intuitive layout
+
+Error handling and feedback messages
+
+🔄 Integration with Exchange Rate APIs
+
+Supported APIs:
+
+FreeCurrencyAPI
+
+Fixer.io
+
+Process:
+
+Rates fetched daily from chosen API and stored in database
+
+Website uses latest stored rates for all conversions
+
+📁 Pages and Routes
+
+Route
+
+Description
+
+/login
+
+Login page
+
+/dashboard
+
+View balances and live exchange rates
+
+/exchange
+
+Form to exchange currency
+
+/transfer
+
+Form to send money to another client
+
+/history
+
+Transaction history with filters/sorting
+
+/logout
+
+Destroys session and redirects to login
+
+📄 Database Tables (Website-Specific)
+
+Clients
+
+id, username, hashed_password, name, created_at
+
+Accounts
+
+client_id, currency, balance
+
+Transactions
+
+id, client_id, type, amount, currency_from, currency_to, receiver_id, created_at
+
+ExchangeRates
+
+base_currency, target_currency, rate, updated_at
+
+🚪 Developer Setup Instructions
+
+Clone the repository
+
+Configure environment variables (DB, API keys)
+
+Run database migrations
+
+Seed database with sample clients and balances
+
+Run the app using npm run dev or dotnet run
+
+Use /login with test credentials
+
+📅 Summary
+
+This website provides a secure and streamlined experience for exchange office clients to manage balances, exchange currencies, and transfer funds. It is designed with performance, security, and usability as priorities, backed by real-time exchange rates and clean system architecture.
+
