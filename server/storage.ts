@@ -99,33 +99,34 @@ export class DatabaseStorage implements IStorage {
     limit?: number;
     offset?: number;
   }): Promise<Transaction[]> {
-    let query = db
-      .select()
-      .from(transactions)
-      .where(eq(transactions.clientId, clientId));
+    const conditions = [eq(transactions.clientId, clientId)];
 
     if (filters?.type && filters.type !== 'all') {
-      query = query.where(eq(transactions.type, filters.type));
+      conditions.push(eq(transactions.type, filters.type));
     }
 
     if (filters?.currency && filters.currency !== 'all') {
-      query = query.where(
+      conditions.push(
         or(
           eq(transactions.currencyFrom, filters.currency),
           eq(transactions.currencyTo, filters.currency)
-        )
+        )!
       );
     }
 
     if (filters?.dateFrom) {
-      query = query.where(gte(transactions.createdAt, filters.dateFrom));
+      conditions.push(gte(transactions.createdAt, filters.dateFrom));
     }
 
     if (filters?.dateTo) {
-      query = query.where(lte(transactions.createdAt, filters.dateTo));
+      conditions.push(lte(transactions.createdAt, filters.dateTo));
     }
 
-    query = query.orderBy(desc(transactions.createdAt));
+    let query = db
+      .select()
+      .from(transactions)
+      .where(and(...conditions))
+      .orderBy(desc(transactions.createdAt));
 
     if (filters?.limit) {
       query = query.limit(filters.limit);
@@ -135,7 +136,7 @@ export class DatabaseStorage implements IStorage {
       query = query.offset(filters.offset);
     }
 
-    return await query;
+    return await query.execute();
   }
 
   async getExchangeRate(baseCurrency: string, targetCurrency: string): Promise<ExchangeRate | undefined> {
