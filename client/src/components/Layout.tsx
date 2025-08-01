@@ -26,35 +26,28 @@ export default function Layout({ children }: LayoutProps) {
     { name: "Transfer", href: "/transfer", icon: "fas fa-paper-plane" },
     { name: "History", href: "/history", icon: "fas fa-history" },
     { name: "Analytics", href: "/analytics", icon: "fas fa-chart-line" },
+    { name: "Profile", href: "/profile", icon: "fas fa-user" },
   ];
 
   const isActive = (href: string) => location === href;
 
   if (isMobile) {
     return (
-      <div className="min-h-screen bg-background pb-16">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pb-16">
         {/* Header */}
-        <header className="bg-surface border-b border-gray-200 px-4 py-4">
+        <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="bg-primary w-10 h-10 rounded-xl flex items-center justify-center">
-                <i className="fas fa-exchange-alt text-white"></i>
+              <div className="bg-blue-600 w-10 h-10 rounded-xl flex items-center justify-center">
+                <span className="text-white font-bold">EO</span>
               </div>
-              <h1 className="text-xl font-bold text-gray-900">Exchange Portal</h1>
+              <h1 className="text-xl font-bold text-gray-900 dark:text-gray-100">Exchange Office</h1>
             </div>
             <div className="flex items-center space-x-3">
               <div className="text-right">
-                <p className="text-sm font-medium text-gray-900">{user?.name}</p>
-                <p className="text-xs text-secondary">@{user?.username}</p>
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{user?.name}</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">@{user?.username}</p>
               </div>
-              <button 
-                onClick={logout}
-                className="flex items-center space-x-1 px-2 py-1 bg-red-500 hover:bg-red-600 text-white rounded text-sm transition-colors"
-                title="Logout"
-              >
-                <i className="fas fa-sign-out-alt"></i>
-                <span>Logout</span>
-              </button>
             </div>
           </div>
         </header>
@@ -65,14 +58,14 @@ export default function Layout({ children }: LayoutProps) {
         </main>
 
         {/* Mobile Navigation */}
-        <nav className="fixed bottom-0 left-0 right-0 bg-surface border-t border-gray-200 z-50">
-          <div className="grid grid-cols-5 h-16">
+        <nav className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 z-50">
+          <div className="grid grid-cols-6 h-16">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 className={`flex flex-col items-center justify-center ${
-                  isActive(item.href) ? "text-primary" : "text-gray-400"
+                  isActive(item.href) ? "text-blue-600 dark:text-blue-400" : "text-gray-500 dark:text-gray-400"
                 }`}
               >
                 <i className={`${item.icon} text-lg mb-1`}></i>

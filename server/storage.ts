@@ -136,7 +136,11 @@ export class DatabaseStorage implements IStorage {
       query = query.offset(filters.offset);
     }
 
-    return await query.execute();
+    return await query;
+  }
+
+  async getAllExchangeRates(): Promise<ExchangeRate[]> {
+    return await db.select().from(exchangeRates);
   }
 
   async getExchangeRate(baseCurrency: string, targetCurrency: string): Promise<ExchangeRate | undefined> {

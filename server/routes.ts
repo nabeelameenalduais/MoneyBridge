@@ -361,6 +361,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Public exchange rates (no authentication required)
+  app.get('/api/exchange-rates/public', async (req, res) => {
+    try {
+      const rates = await storage.getAllExchangeRates();
+      res.json(rates);
+    } catch (error) {
+      res.status(500).json({ message: 'Failed to get exchange rates' });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

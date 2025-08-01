@@ -117,6 +117,10 @@ export default function ExchangePage() {
     if (currentFrom !== currentTo) {
       form.setValue("fromCurrency", currentTo);
       form.setValue("toCurrency", currentFrom);
+      // Clear amount to avoid confusion
+      form.setValue("amount", undefined);
+      setConvertedAmount(0);
+      setExchangeRate(0);
     }
   };
 
@@ -184,14 +188,14 @@ export default function ExchangePage() {
   return (
     <div className="space-y-6">
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Currency Exchange</h2>
-        <p className="text-[#080000]">Convert your currencies at live market rates</p>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Currency Exchange</h2>
+        <p className="text-gray-700 dark:text-gray-300">Convert your currencies at live market rates</p>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Exchange Form */}
         <Card className="rounded-2xl border-gray-100 shadow-sm">
           <CardContent className="p-6">
-            <h3 className="text-xl font-semibold text-gray-900 mb-6">Exchange Currencies</h3>
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6">Exchange Currencies</h3>
             
             <Form {...form}>
               <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">

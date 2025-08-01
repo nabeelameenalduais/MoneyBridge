@@ -42,104 +42,143 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 to-blue-50 px-4">
-      <div className="max-w-md w-full">
-        {/* Logo Section */}
-        <div className="text-center mb-8">
-          <div className="bg-primary w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <i className="fas fa-exchange-alt text-white text-2xl"></i>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
+      {/* Navigation */}
+      <nav className="bg-white dark:bg-gray-800 shadow-lg border-b border-gray-200 dark:border-gray-700">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">EO</span>
+              </div>
+              <span className="text-xl font-bold text-gray-900 dark:text-white">
+                Exchange Office
+              </span>
+            </div>
+            <div className="flex items-center space-x-6">
+              <a 
+                href="/public-exchange-rates"
+                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium"
+              >
+                Exchange Rates
+              </a>
+              <a 
+                href="/public-about"
+                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium"
+              >
+                About
+              </a>
+              <a 
+                href="/public-contact"
+                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium"
+              >
+                Contact
+              </a>
+            </div>
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Exchange Portal</h1>
-          <p className="text-secondary">Secure access to your currency accounts</p>
         </div>
+      </nav>
 
-        {/* Login Form */}
-        <Card className="rounded-2xl shadow-xl border border-gray-100">
-          <CardContent className="p-8">
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
-                {/* Username Field */}
-                <FormField
-                  control={form.control}
-                  name="username"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-sm font-medium text-gray-700">
-                        Username
-                      </FormLabel>
-                      <FormControl>
-                        <div className="relative">
+      <div className="flex items-center justify-center px-4 py-12">
+        <div className="max-w-md w-full">
+          {/* Logo Section */}
+          <div className="text-center mb-8">
+            <div className="bg-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <span className="text-white font-bold text-2xl">EO</span>
+            </div>
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">Welcome Back</h1>
+            <p className="text-gray-600 dark:text-gray-400">Secure access to your currency accounts</p>
+          </div>
+
+          {/* Login Form */}
+          <Card className="rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+            <CardContent className="p-8">
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
+                  {/* Username Field */}
+                  <FormField
+                    control={form.control}
+                    name="username"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                          Username
+                        </FormLabel>
+                        <FormControl>
                           <Input
                             {...field}
-                            className="pl-12 py-3 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary"
+                            className="py-3 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-xl focus:ring-2 focus:ring-blue-500"
                             placeholder="Enter your username"
                           />
-                          <i className="fas fa-user absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-                        </div>
-                      </FormControl>
+                        </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
 
-                {/* Password Field */}
-                <FormField
-                  control={form.control}
-                  name="password"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-sm font-medium text-gray-700">
-                        Password
-                      </FormLabel>
-                      <FormControl>
-                        <div className="relative">
-                          <Input
-                            {...field}
-                            type={showPassword ? "text" : "password"}
-                            className="pl-12 pr-12 py-3 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary"
-                            placeholder="Enter your password"
-                          />
-                          <i className="fas fa-lock absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-                          <button
-                            type="button"
-                            onClick={() => setShowPassword(!showPassword)}
-                            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                          >
-                            <i className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
-                          </button>
-                        </div>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                  {/* Password Field */}
+                  <FormField
+                    control={form.control}
+                    name="password"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                          Password
+                        </FormLabel>
+                        <FormControl>
+                          <div className="relative">
+                            <Input
+                              {...field}
+                              type={showPassword ? "text" : "password"}
+                              className="py-3 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-xl focus:ring-2 focus:ring-blue-500"
+                              placeholder="Enter your password"
+                            />
+                            <button
+                              type="button"
+                              onClick={() => setShowPassword(!showPassword)}
+                              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                            >
+                              {showPassword ? "Hide" : "Show"}
+                            </button>
+                          </div>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-                {/* Submit Button */}
-                <Button
-                  type="submit"
-                  disabled={loginMutation.isPending}
-                  className="w-full bg-primary text-white py-3 px-4 rounded-xl hover:bg-blue-700 focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all duration-200 font-medium"
-                >
-                  {loginMutation.isPending ? (
-                    <>
-                      <i className="fas fa-spinner fa-spin mr-2"></i>
-                      Signing in...
-                    </>
-                  ) : (
-                    "Sign In"
-                  )}
-                </Button>
-              </form>
-            </Form>
-          </CardContent>
-        </Card>
+                  {/* Submit Button */}
+                  <Button
+                    type="submit"
+                    disabled={loginMutation.isPending}
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-xl focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 font-medium"
+                  >
+                    {loginMutation.isPending ? (
+                      <>
+                        ⏳ Signing in...
+                      </>
+                    ) : (
+                      "Sign In"
+                    )}
+                  </Button>
+                </form>
+              </Form>
 
-        {/* Footer */}
-        <div className="text-center mt-6">
-          <p className="text-sm text-secondary">
-            Secured with 256-bit SSL encryption
-            <i className="fas fa-shield-alt ml-1 text-success"></i>
-          </p>
+              {/* Demo Credentials */}
+              <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200 dark:border-blue-800">
+                <p className="text-xs text-blue-800 dark:text-blue-200 font-medium mb-2">Demo Account:</p>
+                <p className="text-xs text-blue-700 dark:text-blue-300">Username: <span className="font-mono">demo</span></p>
+                <p className="text-xs text-blue-700 dark:text-blue-300">Password: <span className="font-mono">password123</span></p>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Footer */}
+          <div className="text-center mt-6">
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              🔒 Secured with 256-bit SSL encryption
+            </p>
+          </div>
         </div>
       </div>
     </div>

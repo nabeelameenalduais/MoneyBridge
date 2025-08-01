@@ -12,6 +12,10 @@ import ExchangePage from "@/pages/exchange";
 import TransferPage from "@/pages/transfer";
 import HistoryPage from "@/pages/history";
 import AnalyticsPage from "@/pages/analytics";
+import ProfilePage from "@/pages/profile";
+import PublicAboutPage from "@/pages/public-about";
+import PublicContactPage from "@/pages/public-contact";
+import PublicExchangeRatesPage from "@/pages/public-exchange-rates";
 import Layout from "@/components/Layout";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import NotFound from "@/pages/not-found";
@@ -104,6 +108,27 @@ function AppRouter() {
             <AnalyticsPage />
           </Layout>
         </ProtectedRoute>
+      </Route>
+      
+      <Route path="/profile">
+        <ProtectedRoute>
+          <Layout>
+            <ProfilePage />
+          </Layout>
+        </ProtectedRoute>
+      </Route>
+
+      {/* Public routes (no authentication required) */}
+      <Route path="/public-about">
+        <PublicAboutPage />
+      </Route>
+      
+      <Route path="/public-contact">
+        <PublicContactPage />
+      </Route>
+      
+      <Route path="/public-exchange-rates">
+        <PublicExchangeRatesPage />
       </Route>
       
       <Route path="/">
