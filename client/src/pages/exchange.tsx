@@ -118,7 +118,7 @@ export default function ExchangePage() {
       form.setValue("fromCurrency", currentTo);
       form.setValue("toCurrency", currentFrom);
       // Clear amount to avoid confusion
-      form.setValue("amount", undefined);
+      form.setValue("amount", "" as any);
       setConvertedAmount(0);
       setExchangeRate(0);
     }
@@ -135,7 +135,7 @@ export default function ExchangePage() {
     if (fromCurrency === toCurrency) {
       const availableCurrencies = getAvailableToCurrencies();
       if (availableCurrencies.length > 0) {
-        form.setValue("toCurrency", availableCurrencies[0]);
+        form.setValue("toCurrency", availableCurrencies[0] as "USD" | "SAR" | "YER");
       }
     }
   }, [fromCurrency, toCurrency, form]);

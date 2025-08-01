@@ -308,11 +308,11 @@ export default function DashboardPage() {
                 </div>
               </div>
               <div className="text-xs text-gray-600">
-                <p>Password: alice2024</p>
+                <p>Password: password123</p>
                 <div className="mt-2 space-y-1">
-                  <p>USD: $500.00</p>
-                  <p>SAR: ﷼10,000.00</p>
-                  <p>YER: ﷼50,000.00</p>
+                  <p>USD: $2,500.00</p>
+                  <p>SAR: ﷼7,500.00</p>
+                  <p>YER: ﷼0.00</p>
                 </div>
               </div>
             </div>
@@ -328,11 +328,11 @@ export default function DashboardPage() {
                 </div>
               </div>
               <div className="text-xs text-gray-600">
-                <p>Password: bob2024</p>
+                <p>Password: password123</p>
                 <div className="mt-2 space-y-1">
-                  <p>USD: $2,000.00</p>
-                  <p>SAR: ﷼3,000.00</p>
-                  <p>YER: ﷼100,000.00</p>
+                  <p>USD: $1,000.00</p>
+                  <p>SAR: ﷼0.00</p>
+                  <p>YER: ﷼500,000.00</p>
                 </div>
               </div>
             </div>
@@ -348,11 +348,11 @@ export default function DashboardPage() {
                 </div>
               </div>
               <div className="text-xs text-gray-600">
-                <p>Password: sarah2024</p>
+                <p>Password: password123</p>
                 <div className="mt-2 space-y-1">
-                  <p>USD: $800.00</p>
-                  <p>SAR: ﷼2,000.00</p>
-                  <p>YER: ﷼500,000.00</p>
+                  <p>USD: $2,000.00</p>
+                  <p>SAR: ﷼5,000.00</p>
+                  <p>YER: ﷼300,000.00</p>
                 </div>
               </div>
             </div>

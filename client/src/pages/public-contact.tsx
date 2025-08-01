@@ -93,8 +93,7 @@ export default function PublicContactPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900 dark:text-gray-100 text-lg">Phone</h3>
-                    <p className="text-gray-600 dark:text-gray-400">+1 (555) 123-4567</p>
-                    <p className="text-gray-600 dark:text-gray-400">+966 11 234 5678</p>
+                    <p className="text-gray-600 dark:text-gray-400">775878777</p>
                   </div>
                 </div>
 
@@ -104,8 +103,7 @@ export default function PublicContactPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900 dark:text-gray-100 text-lg">Email</h3>
-                    <p className="text-gray-600 dark:text-gray-400">support@exchangeoffice.com</p>
-                    <p className="text-gray-600 dark:text-gray-400">business@exchangeoffice.com</p>
+                    <p className="text-gray-600 dark:text-gray-400">nabeel.ameen.alduais@gmail.com</p>
                   </div>
                 </div>
 
@@ -116,9 +114,8 @@ export default function PublicContactPage() {
                   <div>
                     <h3 className="font-bold text-gray-900 dark:text-gray-100 text-lg">Address</h3>
                     <p className="text-gray-600 dark:text-gray-400">
-                      123 Financial District<br />
-                      Riyadh, Saudi Arabia<br />
-                      12345
+                      Exchange Office<br />
+                      Sana'a, Yemen
                     </p>
                   </div>
                 </div>

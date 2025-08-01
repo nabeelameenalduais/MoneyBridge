@@ -88,37 +88,11 @@ export default function PublicAboutPage() {
           </Card>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          <div className="text-center">
-            <div className="w-20 h-20 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Users className="h-10 w-10 text-blue-600 dark:text-blue-400" />
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">10,000+</h3>
-            <p className="text-gray-600 dark:text-gray-400 text-lg">Satisfied Clients</p>
-          </div>
-
-          <div className="text-center">
-            <div className="w-20 h-20 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Globe className="h-10 w-10 text-green-600 dark:text-green-400" />
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">3</h3>
-            <p className="text-gray-600 dark:text-gray-400 text-lg">Major Currencies</p>
-          </div>
-
-          <div className="text-center">
-            <div className="w-20 h-20 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Clock className="h-10 w-10 text-purple-600 dark:text-purple-400" />
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">24/7</h3>
-            <p className="text-gray-600 dark:text-gray-400 text-lg">Service Available</p>
-          </div>
-        </div>
-
         <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-gray-900 dark:text-gray-100 text-2xl">
               <Award className="h-8 w-8 text-yellow-600" />
-              Why Choose Exchange Office?
+              Our Services
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-8">
