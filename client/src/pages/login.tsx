@@ -42,14 +42,14 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
+    <div className="page-container animate-fade-in">
       {/* Navigation */}
-      <nav className="bg-white dark:bg-gray-800 shadow-lg border-b border-gray-200 dark:border-gray-700">
-        <div className="container mx-auto px-4">
+      <nav className="nav-modern">
+        <div className="container mx-auto px-6">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">EO</span>
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{background: 'var(--gradient-primary)'}}>
+                <span className="text-white font-bold text-lg">EO</span>
               </div>
               <span className="text-xl font-bold text-gray-900 dark:text-white">
                 Exchange Office
@@ -58,19 +58,19 @@ export default function LoginPage() {
             <div className="flex items-center space-x-6">
               <a 
                 href="/public-exchange-rates"
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium"
+                className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 font-medium transition-all duration-200 px-3 py-2 rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/20"
               >
                 Exchange Rates
               </a>
               <a 
                 href="/public-about"
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium"
+                className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 font-medium transition-all duration-200 px-3 py-2 rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/20"
               >
                 About
               </a>
               <a 
                 href="/public-contact"
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium"
+                className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 font-medium transition-all duration-200 px-3 py-2 rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/20"
               >
                 Contact
               </a>
@@ -79,20 +79,21 @@ export default function LoginPage() {
         </div>
       </nav>
 
-      <div className="flex items-center justify-center px-4 py-12">
-        <div className="max-w-md w-full">
+      <div className="flex items-center justify-center px-6 py-16">
+        <div className="max-w-md w-full animate-slide-up">
           {/* Logo Section */}
-          <div className="text-center mb-8">
-            <div className="bg-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <span className="text-white font-bold text-2xl">EO</span>
+          <div className="text-center mb-10">
+            <div className="w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 animate-bounce-in" 
+                 style={{background: 'var(--gradient-primary)', boxShadow: 'var(--shadow-strong)'}}>
+              <span className="text-white font-bold text-3xl">EO</span>
             </div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">Welcome Back</h1>
-            <p className="text-gray-600 dark:text-gray-400">Secure access to your currency accounts</p>
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-3">Welcome Back</h1>
+            <p className="text-gray-600 dark:text-gray-400 text-lg">Secure access to your currency accounts</p>
           </div>
 
           {/* Login Form */}
-          <Card className="rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
-            <CardContent className="p-8">
+          <div className="card-modern animate-scale">
+            <div className="p-8">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
                   {/* Username Field */}
@@ -107,7 +108,7 @@ export default function LoginPage() {
                         <FormControl>
                           <Input
                             {...field}
-                            className="py-3 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-xl focus:ring-2 focus:ring-blue-500"
+                            className="input-modern py-4 text-lg"
                             placeholder="Enter your username"
                           />
                         </FormControl>
@@ -130,7 +131,7 @@ export default function LoginPage() {
                             <Input
                               {...field}
                               type={showPassword ? "text" : "password"}
-                              className="py-3 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-xl focus:ring-2 focus:ring-blue-500"
+                              className="input-modern py-4 text-lg pr-16"
                               placeholder="Enter your password"
                             />
                             <button
@@ -151,7 +152,7 @@ export default function LoginPage() {
                   <Button
                     type="submit"
                     disabled={loginMutation.isPending}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-xl focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 font-medium"
+                    className="btn-modern w-full py-4 text-lg font-semibold text-white"
                   >
                     {loginMutation.isPending ? (
                       <>
@@ -170,8 +171,8 @@ export default function LoginPage() {
                 <p className="text-xs text-blue-700 dark:text-blue-300">Username: <span className="font-mono">demo</span></p>
                 <p className="text-xs text-blue-700 dark:text-blue-300">Password: <span className="font-mono">password123</span></p>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
           {/* Footer */}
           <div className="text-center mt-6">

@@ -1,0 +1,198 @@
+/* Modern UI/UX Design System */
+
+/* Custom Design Tokens */
+:root {
+  /* Modern Color Palette */
+  --gradient-primary: linear-gradient(135deg, hsl(262.1 83.3% 57.8%) 0%, hsl(234 89% 73%) 100%);
+  --gradient-secondary: linear-gradient(135deg, hsl(220 14.3% 95.9%) 0%, hsl(210 20% 98%) 100%);
+  --gradient-accent: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  
+  /* Shadows */
+  --shadow-soft: 0 2px 8px -2px rgba(0, 0, 0, 0.05);
+  --shadow-medium: 0 4px 16px -4px rgba(0, 0, 0, 0.1);
+  --shadow-strong: 0 8px 32px -8px rgba(0, 0, 0, 0.15);
+  --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.15);
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+}
+
+.dark {
+  --gradient-primary: linear-gradient(135deg, hsl(263.4 70% 50.4%) 0%, hsl(234 89% 63%) 100%);
+  --gradient-secondary: linear-gradient(135deg, hsl(215 27.9% 16.9%) 0%, hsl(224 71.4% 4.1%) 100%);
+  --shadow-soft: 0 2px 8px -2px rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0 4px 16px -4px rgba(0, 0, 0, 0.4);
+  --shadow-strong: 0 8px 32px -8px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.3);
+}
+
+/* Modern Component Styles */
+.card-modern {
+  @apply bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl;
+  box-shadow: var(--shadow-medium);
+  transition: all 0.3s ease;
+}
+
+.card-modern:hover {
+  box-shadow: var(--shadow-strong);
+  transform: translateY(-2px);
+}
+
+/* Glassmorphism Effect */
+.glass {
+  @apply bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl;
+}
+
+/* Modern Button Styles */
+.btn-modern {
+  @apply relative overflow-hidden rounded-xl font-medium transition-all duration-300 px-6 py-3;
+  background: var(--gradient-primary);
+  box-shadow: var(--shadow-medium);
+}
+
+.btn-modern:hover {
+  @apply scale-105;
+  box-shadow: var(--shadow-strong), var(--shadow-glow);
+}
+
+.btn-modern:active {
+  @apply scale-95;
+}
+
+/* Modern Input Styles */
+.input-modern {
+  @apply rounded-xl border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm;
+  @apply focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all duration-200;
+  box-shadow: var(--shadow-soft);
+}
+
+.input-modern:focus {
+  box-shadow: var(--shadow-medium), var(--shadow-glow);
+}
+
+/* Navigation Styles */
+.nav-modern {
+  @apply bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-700/50;
+  box-shadow: var(--shadow-soft);
+}
+
+/* Page Layout */
+.page-container {
+  @apply min-h-screen;
+  background: var(--gradient-secondary);
+}
+
+.content-container {
+  @apply container mx-auto px-4 py-8 max-w-7xl;
+}
+
+/* Animation Classes */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out;
+}
+
+.animate-scale {
+  animation: scale 0.4s ease-out;
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.6s ease-out;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(2rem); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes scale {
+  from { 
+    opacity: 0; 
+    transform: scale(0.95); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Utility Classes */
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.border-gradient {
+  position: relative;
+  background: linear-gradient(white, white) padding-box,
+              var(--gradient-primary) border-box;
+  border: 2px solid transparent;
+}
+
+/* Loading States */
+.skeleton-modern {
+  @apply animate-pulse bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700;
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Status Indicators */
+.status-success {
+  @apply bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-700;
+}
+
+.status-warning {
+  @apply bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-700;
+}
+
+.status-error {
+  @apply bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-700;
+}
+
+.status-info {
+  @apply bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-700;
+}
